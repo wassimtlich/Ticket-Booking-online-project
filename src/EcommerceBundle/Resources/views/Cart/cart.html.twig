@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="{{ path('ecommerce_product_details',{'id':product.id}) }}"> <img class="media-object" src="{{ asset(product.image) }}" style="width: 72px; height: 72px;"> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="{{ path('ecommerce_product_details',{'id':product.id}) }}">{{ product.name }}</a></h4>
+                              
+                            </div>
+                        </div></td>
+                        <!--<td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                        </td>-->
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ panier[product.id] }}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ product.price }} DT</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                        <a href="{{ path('ecommerce_delete_cart',{'id':product.id}) }}"><i class="fa fa-trash fa-2x" style="color:#C82333"></i></a>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        
+                        <td>   </td>
+                        <td>
+                            <a href="/" class="btn btn-info">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Acceuil
+                            </a>
+                        </td>
+                        <td>
+                            <td>
+                             <a href="{{ path('ecommerce_checkout') }}" class="btn btn-success">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Checkout
+                            </a>
+                        </td>
+                        </td>
+                        {% if panier|length >0 %}
+                            <td>
+                                <a href="{{ path('ecommerce_clear_cart') }}" class="btn btn-danger btn-xg">Clear cart</a> 
+                            </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

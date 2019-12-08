@@ -1,0 +1,56 @@
+ecommerce_homepage:
+    path:     /
+    defaults: { _controller: EcommerceBundle:Ecommerce:index }
+
+ecommerce_about:
+    path:     /about
+    defaults: { _controller: EcommerceBundle:Ecommerce:about }
+
+ecommerce_contact:
+    path:     /contact
+    defaults: { _controller: EcommerceBundle:Ecommerce:contact }
+
+ecommerce_product_details:
+    path:     /product{id}
+    defaults: { _controller: EcommerceBundle:Ecommerce:productDetails }
+
+ecommerce_products_by_categorie:
+      path:     /categorie{id}
+      defaults: { _controller: EcommerceBundle:Ecommerce:categorieProducts }
+ 
+
+ecommerce_cart:
+      path:     /cart
+      defaults: { _controller: EcommerceBundle:Ecommerce:cart }
+      
+ecommerce_add_cart:
+      path:     /add{id}
+      defaults: { _controller: EcommerceBundle:Ecommerce:addCart }
+
+ecommerce_delete_cart:
+      path:     /delete{id}
+      defaults: { _controller: EcommerceBundle:Ecommerce:deleteCart }
+
+ecommerce_clear_cart:
+      path:     /clear
+      defaults: { _controller: EcommerceBundle:Ecommerce:clearCart }
+
+ecommerce_checkout:
+      path:     /checkout
+      defaults: { _controller: EcommerceBundle:Ecommerce:checkout }
+
+
+ecommerce_dashebord_homepage:
+      path:     /dashebord 
+      defaults: { _controller: EcommerceBundle:Dashebord:index }
+
+
+ecommerce_dashebord_add_categorie:
+      path:     /dashebord/addCategorie 
+      defaults: { _controller: EcommerceBundle:Dashebord:addCategorie }
+
+ecommerce_send_email:
+      path:     /send
+      defaults: { _controller: EcommerceBundle:Ecommerce:SendEmail }
+
+      

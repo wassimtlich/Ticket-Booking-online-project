@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <h1 class="my-4">Shop Name</h1>
+          <div class="list-group">
+          {% for categorie in categories %}
+              <a href="{{ path('ecommerce_products_by_categorie',{'id':categorie.id}) }}" class="list-group-item {% if categorie == product.getCategorie() %}active{% endif %}">{{ categorie.name }}</a>
+          {% endfor %}
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+          <div class="card mt-4">
+            <img class="card-img-top img-fluid" src="{{ asset(product.image) }}" alt="" style="width:12.5em">
+            <div class="card-body">
+              <h3 class="card-title">{{ product.name }}</h3>
+              <h4>{{ product.price }}DT</h4>
+              <p class="card-text">{{ product.description }}</p>
+              {% if panier[product.id] is not defined %}
+                        <form action="{{ path('ecommerce_add_cart', { 'id' : product.id }) }}" method="get">
+                            <select name="qte" class="span1">
+                                {% for i in 1..10 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <div>
+                                <button class="btn btn-primary">Ajouter au panier</button>
+                            </div>
+                        </form>
+                        {% else %}
+                            <div>
+                                <a href="{{ path('cart') }}" class="btn btn-primary">product exist</a>
+                            </div>
+                        {% endif %}
+            </div>
+          </div>
+          <!-- /.card -->
+
+
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+{% endblock %}
